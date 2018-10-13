@@ -1,0 +1,36 @@
+{
+  "name": "flow-algebra-rs",
+  "version": "0.3.0",
+  "description": "Rust Option<T> and Result<T, E> types for Flow",
+  "main": "lib",
+  "scripts": {
+    "lint": "eslint src test",
+    "test": "mocha --recursive --compilers js:babel-register",
+    "build": "npm run lint && rm -rf lib/* && babel src -d lib && flow-copy-source -v src lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmtmtoo/flow-algebra-rs.git"
+  },
+  "author": "tmtmtoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tmtmtoo/flow-algebra-rs/issues"
+  },
+  "homepage": "https://github.com/tmtmtoo/flow-algebra-rs#readme",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "10.0.1",
+    "babel-plugin-syntax-flow": "6.18.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-flow": "6.23.0",
+    "eslint": "5.6.1",
+    "eslint-plugin-flow-vars": "0.5.0",
+    "eslint-plugin-flowtype": "2.50.3",
+    "eslint-plugin-flowtype-errors": "3.6.0",
+    "flow-bin": "0.83.0",
+    "flow-copy-source": "2.0.2",
+    "mocha": "5.2.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "baseBranches": ["develop"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "minor": {
+    "automerge": false
+  },
+  "path": {
+    "automerge": true
+  },
+  "prConcurrentLimit": 100,
+  "prHourlyLimit": 100
+}

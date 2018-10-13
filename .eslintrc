@@ -1,0 +1,25 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "flow-vars",
+    "flowtype",
+    "flowtype-errors"
+  ],
+  "rules": {
+    "semi": [2, "never"],
+    "flow-vars/define-flow-type": 1,
+    "flow-vars/use-flow-type": 1,
+    "flowtype-errors/show-errors": "error",
+    "prefer-const": "error",
+    "no-console": "off"
+  }
+}

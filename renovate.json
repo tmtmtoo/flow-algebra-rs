@@ -10,7 +10,7 @@
   "minor": {
     "automerge": false
   },
-  "path": {
+  "patch": {
     "automerge": true
   },
   "prConcurrentLimit": 100,

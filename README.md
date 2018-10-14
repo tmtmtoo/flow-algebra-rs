@@ -49,9 +49,9 @@ $ npm install --save flow-algebra-rs
 ```js
 // @flow
 
-import { Some, Ok } from 'flow-algebraic-rs'
+import { Some, Ok } from 'flow-algebra-rs'
 
-import type { Option, Result } from 'flow-algebraic-rs'
+import type { Option, Result } from 'flow-algebra-rs'
 
 const option: Option<number> = Some.new(10)
 

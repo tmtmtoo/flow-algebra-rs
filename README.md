@@ -65,7 +65,7 @@ Null-safe and Exception-safe programming helper utilities are available.
 ```js
 // @flow
 
-import { Optional } from 'flow-algebra-rs/utils'
+import { Optional } from 'flow-algebra-rs'
 
 const nullableVaule: ?number = null
 
@@ -80,7 +80,7 @@ console.log(`value is ${value}`) // value is 0
 ```js
 // @flow
 
-import { Try } from 'flow-algebra-rs/utils'
+import { Try } from 'flow-algebra-rs'
 
 const invalidJSON = 'to be error'
 

@@ -4,7 +4,7 @@ declare var describe: Function
 declare var it: Function
 
 import assert from 'assert'
-import { Try } from '../../src/utils'
+import { Try } from '../../src'
 
 describe(__filename, () => {
 

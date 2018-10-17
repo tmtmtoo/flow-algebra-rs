@@ -1,5 +1,9 @@
 // @flow
 
+import { Some, None } from '../'
+
+import type { Option } from '../'
+
 export type Result<T, E> = Ok<T, E> | Err<T, E>
 
 export class Ok<T, E> {
@@ -49,6 +53,10 @@ export class Ok<T, E> {
   // eslint-disable-next-line
   unwrapOrElse(op: E => T): T {
     return this.unwrap()
+  }
+
+  ok(): Option<T> {
+    return new Some(this.unwrap)
   }
 
   isOk(): boolean {
@@ -104,6 +112,10 @@ export class Err<T, E> {
 
   unwrapOrElse(op: E => T): T {
     return op(this.unwrapErr())
+  }
+
+  ok(): Option<T> {
+    return None.new()
   }
 
   isOk(): boolean {

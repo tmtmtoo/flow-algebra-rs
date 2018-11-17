@@ -1,6 +1,6 @@
 // @flow
 
-export type Option<T> = Some<T> | None
+export type Option<T> = Some<T> | None<T>
 
 export class Some<T> {
 
@@ -59,9 +59,9 @@ export class Some<T> {
   }
 }
 
-export class None {
+export class None<T> {
 
-  +unwrap: () => *
+  +unwrap: () => T
 
   constructor() {
     this.unwrap = () => {
@@ -69,43 +69,43 @@ export class None {
     }
   }
 
-  static new(): None {
+  static new(): None<T> {
     return new None()
   }
 
   // eslint-disable-next-line
-  map<T, U: $NonMaybeType<*>>(f: T => U): Option<U> {
+  map<U: $NonMaybeType<*>>(f: T => U): Option<U> {
     return new None()
   }
 
   // eslint-disable-next-line
-  mapOr<T, U: $NonMaybeType<*>>(defaults: U, f: T => U): U {
+  mapOr<U: $NonMaybeType<*>>(defaults: U, f: T => U): U {
     return defaults
   }
 
   // eslint-disable-next-line
-  mapOrElse<T, U: $NonMaybeType<*>>(defaults: () => U, f: T => U): U {
+  mapOrElse<U: $NonMaybeType<*>>(defaults: () => U, f: T => U): U {
     return defaults()
   }
 
   // eslint-disable-next-line
-  andThen<T, U>(f: T => Option<U>): Option<U> {
+  andThen<U>(f: T => Option<U>): Option<U> {
     return new None()
   }
 
-  or<T>(optb: Option<T>): Option<T> {
+  or(optb: Option<T>): Option<T> {
     return optb
   }
 
-  orElse<T>(f: () => Option<T>): Option<T> {
+  orElse(f: () => Option<T>): Option<T> {
     return f()
   }
 
-  unwrapOr<T>(def: T): T {
+  unwrapOr(def: T): T {
     return def
   }
 
-  unwrapOrElse<T>(f: () =>T): T {
+  unwrapOrElse(f: () =>T): T {
     return f()
   }
 

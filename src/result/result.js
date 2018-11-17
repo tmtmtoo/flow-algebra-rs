@@ -1,8 +1,12 @@
 // @flow
 
-export type Result<T, E> = Ok<T> | Err<E>
+import { Some, None } from '../'
 
-export class Ok<T> {
+import type { Option } from '../'
+
+export type Result<T, E> = Ok<T, E> | Err<T, E>
+
+export class Ok<T, E> {
 
   +unwrap: () => T
 
@@ -10,24 +14,24 @@ export class Ok<T> {
     this.unwrap = unwrap
   }
 
-  static new(value: T): Result<T, *> {
+  static new(value: T): Result<T, E> {
     return new Ok(() => value)
   }
 
-  map<U>(op: T => U): Result<U, *> {
+  map<U>(op: T => U): Result<U, E> {
     return new Ok(() => op(this.unwrap()))
   }
 
-  andThen<U, E>(op: T => Result<U, E>): Result<U, E> {
+  andThen<U>(op: T => Result<U, E>): Result<U, E> {
     return op(this.unwrap())
   }
 
   // eslint-disable-next-line
-  mapErr<E, F>(op: E => F): Result<T, F> {
+  mapErr<F>(op: E => F): Result<T, F> {
     return new Ok(this.unwrap)
   }
 
-  unwrapErr<E>(): E {
+  unwrapErr(): E {
     throw new Error('cannnot unwrap error')
   }
 
@@ -37,7 +41,7 @@ export class Ok<T> {
   }
 
   // eslint-disable-next-line
-  orElse<E, F>(op: E => Result<T, F>): Result<T, F> {
+  orElse<F>(op: E => Result<T, F>): Result<T, F> {
     return new Ok(this.unwrap)
   }
 
@@ -47,8 +51,12 @@ export class Ok<T> {
   }
 
   // eslint-disable-next-line
-  unwrapOrElse<E>(op: E => T): T {
+  unwrapOrElse(op: E => T): T {
     return this.unwrap()
+  }
+
+  ok(): Option<T> {
+    return new Some(this.unwrap)
   }
 
   isOk(): boolean {
@@ -60,7 +68,7 @@ export class Ok<T> {
   }
 }
 
-export class Err<E> {
+export class Err<T, E> {
 
   +unwrapErr: () => E
 
@@ -68,42 +76,46 @@ export class Err<E> {
     this.unwrapErr = unwrap_err
   }
 
-  static new(error: E): Result<*, E> {
+  static new(error: E): Result<T, E> {
     return new Err(() => error)
   }
 
-  unwrap<T>(): T {
+  unwrap(): T {
     throw new Error('cannot unwrap')
   }
 
   // eslint-disable-next-line
-  map<T, U>(op: T => U): Result<U, E> {
-    return this
-  }
-
-  // eslint-disable-next-line
-  andThen<T, U>(op: T => Result<U, E>): Result<U, E> {
+  map<U>(op: T => U): Result<U, E> {
     return new Err(this.unwrapErr)
   }
 
-  mapErr<F>(op: E => F): Result<*, F> {
+  // eslint-disable-next-line
+  andThen<U>(op: T => Result<U, E>): Result<U, E> {
+    return new Err(this.unwrapErr)
+  }
+
+  mapErr<F>(op: E => F): Result<T, F> {
     return new Err(() => op(this.unwrapErr()))
   }
 
-  or<T, F>(res: Result<T, F>): Result<T, F> {
+  or<F>(res: Result<T, F>): Result<T, F> {
     return res
   }
 
-  orElse<T, F>(op: E => Result<T, F>): Result<T, F> {
+  orElse<F>(op: E => Result<T, F>): Result<T, F> {
     return op(this.unwrapErr())
   }
 
-  unwrapOr<T>(optb: T): T {
+  unwrapOr(optb: T): T {
     return optb
   }
 
-  unwrapOrElse<T>(op: E => T): T {
+  unwrapOrElse(op: E => T): T {
     return op(this.unwrapErr())
+  }
+
+  ok(): Option<T> {
+    return None.new()
   }
 
   isOk(): boolean {

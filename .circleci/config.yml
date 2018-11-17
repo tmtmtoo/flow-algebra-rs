@@ -37,7 +37,10 @@ jobs:
 
       - persist_to_workspace:
           root: ~/repo
-          paths: .
+          paths:
+            - package.json
+            - README.md
+            - lib
 
   deploy:
     <<: *defaults

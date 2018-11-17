@@ -29,7 +29,7 @@ $ npm install --save flow-algebra-rs
 ### [Result](https://doc.rust-lang.org/stable/std/result/)
 - [x] [is_ok](https://doc.rust-lang.org/std/result/enum.Result.html#method.is_ok)
 - [x] [is_err](https://doc.rust-lang.org/std/result/enum.Result.html#method.is_err)
-- [ ] [ok](https://doc.rust-lang.org/std/result/enum.Result.html#method.ok)
+- [x] [ok](https://doc.rust-lang.org/std/result/enum.Result.html#method.ok)
 - [ ] [err](https://doc.rust-lang.org/std/result/enum.Result.html#method.err)
 - [x] [map](https://doc.rust-lang.org/std/result/enum.Result.html#method.map)
 - [x] [map_err](https://doc.rust-lang.org/std/result/enum.Result.html#method.map_err)

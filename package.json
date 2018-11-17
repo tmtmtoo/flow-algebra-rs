@@ -1,6 +1,6 @@
 {
   "name": "flow-algebra-rs",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Rust Option<T> and Result<T, E> types for Flow",
   "main": "lib",
   "scripts": {

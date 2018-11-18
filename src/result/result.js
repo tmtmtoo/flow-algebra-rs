@@ -22,6 +22,10 @@ export class Ok<T, E> {
     return new Ok(() => op(this.unwrap()))
   }
 
+  and<U>(res: Result<U, E>): Result<U, E> {
+    return res
+  }
+
   andThen<U>(op: T => Result<U, E>): Result<U, E> {
     return op(this.unwrap())
   }
@@ -90,6 +94,11 @@ export class Err<T, E> {
 
   // eslint-disable-next-line
   map<U>(op: T => U): Result<U, E> {
+    return new Err(this.unwrapErr)
+  }
+
+  // eslint-disable-next-line
+  and<U>(res: Result<U, E>): Result<U, E> {
     return new Err(this.unwrapErr)
   }
 

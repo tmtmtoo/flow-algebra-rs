@@ -59,6 +59,10 @@ export class Ok<T, E> {
     return new Some(this.unwrap)
   }
 
+  err(): Option<E> {
+    return new None()
+  }
+
   isOk(): boolean {
     return true
   }
@@ -115,7 +119,11 @@ export class Err<T, E> {
   }
 
   ok(): Option<T> {
-    return None.new()
+    return new None()
+  }
+
+  err(): Option<E> {
+    return new Some(this.unwrapErr)
   }
 
   isOk(): boolean {

@@ -31,6 +31,6 @@
     "eslint-plugin-flowtype-errors": "3.6.0",
     "flow-bin": "0.94.0",
     "flow-copy-source": "2.0.9",
-    "mocha": "5.2.0"
+    "mocha": "7.1.2"
   }
 }

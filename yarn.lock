@@ -1341,9 +1341,10 @@ flatted@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.0.tgz#55122b6536ea496b4b44893ee2608141d10d9916"
 
-flow-bin@0.94.0:
-  version "0.94.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.94.0.tgz#b5d58fe7559705b73a18229f97edfc3ab6ffffcb"
+flow-bin@0.221.0:
+  version "0.221.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.221.0.tgz#ebf2cef7301ce330dee53a4e8c3e817a9daf5dc0"
+  integrity sha512-ozjD7cMb7tY6NuRqf6THALc4CDmiuodePYYVj1CS4vkepU9C3qx7/Q6jlieE7SBUN4CkWzlbt4LSMsWFu5a1eQ==
 
 flow-copy-source@2.0.9:
   version "2.0.9"
